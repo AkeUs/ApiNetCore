@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ApiNetCore.Models {
-    public class AutorNuevoDTO {
+    public class AutorModelDTO {
         [Required]
         public string Nombre { get; set; }
     }

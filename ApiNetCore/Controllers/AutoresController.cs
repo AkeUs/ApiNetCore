@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiNetCore.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace ApiNetCore.Controllers {
 
@@ -41,8 +42,8 @@ namespace ApiNetCore.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] AutorNuevoDTO autorNuevo) {
-            var autor = mapper.Map<Autor>(autorNuevo);
+        public async Task<ActionResult> Post([FromBody] AutorModelDTO autorModel) {
+            var autor = mapper.Map<Autor>(autorModel);
             context.Autores.Add(autor);
             await context.SaveChangesAsync();
             var autorDTO = mapper.Map<AutorDTO>(autor);
@@ -50,24 +51,48 @@ namespace ApiNetCore.Controllers {
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Autor value) {
-            if(id != value.Id) {
+        public async Task<ActionResult> Put(int id, [FromBody] AutorModelDTO autorActualizado) {
+            var autor = mapper.Map<Autor>(autorActualizado);
+            autor.Id = id;
+            context.Entry(autor).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<AutorModelDTO> patchDocument) {
+            if (patchDocument is null) {
                 return BadRequest();
             }
-            context.Entry(value).State = EntityState.Modified;
-            context.SaveChanges();
+
+            var autor = await context.Autores.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (autor is null) {
+                return NotFound();
+            }
+
+            var autorDTO = mapper.Map<AutorModelDTO>(autor);
+            patchDocument.ApplyTo(autorDTO, ModelState);
+            var isValid = TryValidateModel(autor);
+
+            if (!isValid) {
+                return BadRequest(ModelState);
+            }
+
+            mapper.Map(autorDTO, autor);
+            await context.SaveChangesAsync();
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Autor> Delete(int id) {
-            var autor = context.Autores.FirstOrDefault(x => x.Id == id);
-            if(autor is null) {
+        public async Task<ActionResult<Autor>> Delete(int id) {
+            var autorId = context.Autores.Select(x => x.Id).FirstOrDefault(x => x == id);
+            if(autorId == default(int)) {
                 return NotFound();
             }
-            context.Autores.Remove(autor);
-            context.SaveChanges();
-            return autor;
+            context.Remove(new Autor { Id = autorId });
+            await context.SaveChangesAsync();
+            return Ok();
 
         }
 
