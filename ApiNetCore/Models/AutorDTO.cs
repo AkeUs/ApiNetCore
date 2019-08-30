@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using ApiNetCore.Entities;
 using ApiNetCore.Helpers;
 
 namespace ApiNetCore.Models
@@ -10,7 +9,7 @@ namespace ApiNetCore.Models
         [Required]
         [PrimeraLetraMayuscula]
         public string Nombre { get; set; }
-        public List<Libro> Libros { get; set; }
+        public List<LibroDTO> Libros { get; set; }
         
     }
 }

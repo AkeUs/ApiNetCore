@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ApiNetCore.Entities;
 
 namespace ApiNetCore.Models
 {
@@ -9,6 +8,6 @@ namespace ApiNetCore.Models
         public string Titulo { get; set; }
         [Required]
         public int AutorId { get; set; }
-        public Autor Autor { get; set; }
+        public AutorDTO Autor { get; set; }
     }
 }
