@@ -11,4 +11,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.deps.json" />
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.dll" />
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.dll.RoslynCA.json" />
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.pdb" />
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.runtimeconfig.dev.json" />
+    <Content Include="obj\bin\Debug\netcoreapp2.2\ApiNetCore.runtimeconfig.json" />
+  </ItemGroup>
+
 </Project>

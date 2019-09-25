@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "E:\\Ejemplos\\NetCore\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+    "projectUniqueName": "E:\\Ejemplos\\Back-End\\NetCore\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
     "projectName": "ApiNetCore",
-    "projectPath": "E:\\Ejemplos\\NetCore\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
-    "outputPath": "E:\\Ejemplos\\NetCore\\ApiNetCore\\ApiNetCore\\obj\\",
+    "projectPath": "E:\\Ejemplos\\Back-End\\NetCore\\ApiNetCore\\ApiNetCore\\ApiNetCore.csproj",
+    "outputPath": "E:\\Ejemplos\\Back-End\\NetCore\\ApiNetCore\\ApiNetCore\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14,7 +14,6 @@
     ],
     "sources": {
       "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-      "http://bestday-nuget.azurewebsites.net/nuget": {},
       "https://api.nuget.org/v3/index.json": {},
       "https://bestdayit.pkgs.visualstudio.com/_packaging/common@Local/nuget/v3/index.json": {},
       "https://drakkarsbestday.pkgs.visualstudio.com/_packaging/NeoFramework/nuget/v3/index.json": {}
